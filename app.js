@@ -8,7 +8,7 @@ require('dotenv').config();
 const port = process.env.PORT || 3000; // Set the port you want to use
 
 
-const token = 'Authorization: Bearer EAASs6XgWjPMBOyeBdwFRsYvzENMOcWeImJEXGZCFPmHrhwSwI6WiOrezkuMivSNsSNM9Nn6hFoislDGZBQpmevx4QG4tD9xgHT3c3bbyjZBDZCLdt1ZBWlFj7rnxReJ1ofn43YNIZBM3ceXB1TaKqZAjBP7B6Y1CjcDE6SXctaoAyaGH8zEo1xsPOcNCayZC0KmjXiHT4Ge71IjSHUSLrb6FtX1THEcbuHbkGBYZD';
+
 const mytoken = 'rishabh';
 
 // Define a route to handle incoming webhook requests
@@ -35,7 +35,7 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
 
   let body_param=req. body;
-console.log (JSON.stringify(body_param, null,2));
+//console.log (JSON.stringify(body_param, null,2));
 
 if (body_param.object){
 if (body_param.entry &&
@@ -46,26 +46,41 @@ body_param.entry[0].changes[0].value.message[0]){
   let phon_no_id=body_param.entry[0].changes[0].value.metadata.phone_number_id;
   let from = body_param.entry[0].changes[0].value.messages[0].from;
   let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+  console.log(phon_no_id);
+  console.log(msg_body);
 
-  axios({
-    method: "POST",
-  url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
-  data:{
-  messaging_product: "whatsapp", 
+
+
+  const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+  
+  const data = {
+    messaging_product: "whatsapp", 
   to: from, 
   text:{
   body: "Hi.. I'm Rishabh"
   }
-  },
-    headers:{
-      "Content-Type":"application/json"
+  };
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer EAASs6XgWjPMBOZB4vjHN1vMn8Gdt0oSWZAaRr5mCvfXmcrJPWa9xOvOIZCZApJm54tUuFMic1lSchMgzbDbokZAfs1K9cg5ZA48rkZCuMZA86gxXyzlmAN3i5BVdwRGTqV77IJECggONeq68fc485uEWZBoxTmr57A63pZC048n0EHScBJ7xCB5J6qKYXvZB38Gmm4c0OtQgfRJgQyiPc2oXAYoVWQW2niLq0MgCYFS`,
+      'Content-Type': 'application/json'
     }
-
-  });
+  };
+  
+  axios.post(url, data, config)
+    .then(response => {
+      console.log('Response:', success);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  
 
   res.sendStatus(200);
 
 }else{
+  console.log('error');
   res.sendStatus(404);
 }
 }
