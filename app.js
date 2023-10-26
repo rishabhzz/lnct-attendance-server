@@ -8,8 +8,8 @@ require('dotenv').config();
 const port = process.env.PORT || 3000; // Set the port you want to use
 
 
-const token = process.env.TOKEN;
-const mytoken = process.env.MYTOKEN;
+const token = 'Authorization: Bearer EAASs6XgWjPMBOyeBdwFRsYvzENMOcWeImJEXGZCFPmHrhwSwI6WiOrezkuMivSNsSNM9Nn6hFoislDGZBQpmevx4QG4tD9xgHT3c3bbyjZBDZCLdt1ZBWlFj7rnxReJ1ofn43YNIZBM3ceXB1TaKqZAjBP7B6Y1CjcDE6SXctaoAyaGH8zEo1xsPOcNCayZC0KmjXiHT4Ge71IjSHUSLrb6FtX1THEcbuHbkGBYZD';
+const mytoken = 'rishabh';
 
 // Define a route to handle incoming webhook requests
 app.get('/webhook', (req, res) => {
