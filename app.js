@@ -73,14 +73,14 @@ body_param.entry[0].changes[0].value.message[0]){
       console.log('Response:', success);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('inside if error');
     });
   
 
   res.sendStatus(200);
 
 }else{
-  console.log('error');
+  console.log('outside');
   res.sendStatus(404);
 }
 }
