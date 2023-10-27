@@ -84,11 +84,14 @@ body_param.entry[0].changes[0].value.messages[0]){
           })
           .then(response => {
             // Handle the API response
-            console.log('API Response:', response.data);
+             let resp=req.body;
+             let total=resp.percentage;
+            
+            console.log('API Response:', total);
           })
           .catch(error => {
             // Handle API call error
-            console.error('API Error:', error);
+            console.error('API Error');
           });
 
        
@@ -99,7 +102,7 @@ body_param.entry[0].changes[0].value.messages[0]){
        res.sendStatus(200); // Respond to the webhook request
     })
     .catch(error => {
-      console.error('Firebase database error:', error);
+      console.error('Firebase database error');
       res.sendStatus(500); // Respond with an error status
     });
 
