@@ -119,7 +119,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                   messaging_product: "whatsapp", 
                 to: from, 
                 text:{
-                body: "Visit https://vibrlabs.web.app/ and use this OTP " + otp + "to link your whatsapp number with your accsoft account!"
+                body: "Visit https://vibrlabs.web.app/ and use this OTP " + otp + " to link your whatsapp number with your accsoft account!"
                 }
                 };
                 
