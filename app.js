@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000; // Set the port you want to use
 
 
 const rateLimitWindowMs = 60 * 1000; // 1 minute
-const maxRequestsPerWindow = 4;
+const maxRequestsPerWindow = 5;
 
 const requestCount = {}; // In-memory data store to track request counts
 
