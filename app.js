@@ -78,13 +78,13 @@ app.use((req, res, next) => {
     
     
     }else{
-      requestCount[phone].push(now);
+     // requestCount[phone].push(now);
         next();
 
     }
     }else{
-      requestCount[phone].push(now);
-        next();
+     
+      next();
 
     }
 
