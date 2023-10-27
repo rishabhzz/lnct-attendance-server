@@ -520,6 +520,93 @@ ref.remove() // or ref.set(null) to delete
 
       res.sendStatus(200);
 
+  }else if(msg_body == 'check'){
+
+
+
+
+
+    admin
+    .database()
+    .ref(`user/${from}`)
+    .once('value')
+    .then(snapshot => {
+      const userData = snapshot.val();
+
+      if (userData) {
+        // User exists in the database
+        const id = userData.id;
+        const pass = userData.pass;
+        
+   const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+  const data = {
+    messaging_product: "whatsapp", 
+  to: from, 
+  text:{
+  body: "Your Accsoft login id :" + id + "\n" + "Your Accsoft Password is : "+pass
+  }
+  };
+
+  const config = {
+    headers: {
+      Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  axios.post(url, data, config)
+    .then(response => {
+      console.log('Response:', response);
+    })
+    .catch(error => {
+      console.log('error while calling wa api using udate command with users');
+      
+    });
+      
+
+      
+      } else {
+        console.log('User not found in the database.');
+        const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+        const data = {
+          messaging_product: "whatsapp", 
+        to: from, 
+        text:{
+        body: "No account found." + "\n" + "Follow this url to link your whatsapp number with your Accsoft ID"
+        }
+        };
+
+        const config = {
+          headers: {
+            Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+            'Content-Type': 'application/json'
+          }
+        };
+
+        axios.post(url, data, config)
+          .then(response => {
+            console.log('Response:', response);
+          })
+          .catch(error => {
+            console.log('error while calling wa api using update command without users');
+            
+          });
+
+      }
+      res.sendStatus(200); // Respond to the webhook request
+    })
+    .catch(error => {
+      console.error('Firebase database error:', error);
+      res.sendStatus(500); // Respond with an error status
+    });
+
+
+
+
+
+
   }else{
 
     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
