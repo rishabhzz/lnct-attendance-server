@@ -2,7 +2,7 @@ const express = require('express');
 const body_parser = require('body-parser');
 
 const admin = require('firebase-admin');
-const serviceAccount = require('keys.json');
+const serviceAccount = require('./keys.json');
 
 
 const { subscribe } = require('diagnostics_channel');
