@@ -61,7 +61,7 @@ body_param.entry[0].changes[0].value.messages[0]){
 
   admin
     .database()
-    .ref(`users/${from}`)
+    .ref(`user/${from}`)
     .once('value')
     .then(snapshot => {
       const userData = snapshot.val();
