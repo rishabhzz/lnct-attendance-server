@@ -51,7 +51,7 @@ app.use((req, res, next) => {
         res.status(429).json({ error: 'Rate limit exceeded' });
         const data = {
           messaging_product: "whatsapp", 
-        to: from, 
+        to: phone, 
         text:{
         body: "Too many requests, Please try again after some time."
         }
