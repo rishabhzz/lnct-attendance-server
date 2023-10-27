@@ -87,11 +87,12 @@ body_param.entry[0].changes[0].value.messages[0]){
             console.error('API Error:', error);
           });
 
-        res.sendStatus(200); // Respond to the webhook request
+       
       } else {
         console.log('User not found in the database.');
-        res.sendStatus(200); // Respond to the webhook request
+
       }
+       res.sendStatus(200); // Respond to the webhook request
     })
     .catch(error => {
       console.error('Firebase database error:', error);
