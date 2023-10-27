@@ -91,7 +91,7 @@ body_param.entry[0].changes[0].value.messages[0]){
           })
           .catch(error => {
             // Handle API call error
-            console.error('API Error');
+            console.error('API Error', error);
           });
 
        
