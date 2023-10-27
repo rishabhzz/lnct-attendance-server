@@ -87,7 +87,7 @@ body_param.entry[0].changes[0].value.messages[0]){
             // let resp=response.body;
            //  let total = resp.percentage;
             
-            console.log('API Response: ***********', response.body);
+            console.log('API Response: ***********', response.data);
           })
           .catch(error => {
             // Handle API call error
