@@ -376,7 +376,7 @@ ref.remove() // or ref.set(null) to delete
       messaging_product: "whatsapp", 
     to: from, 
     text:{
-    body: "Your account has been successfully deleted"
+    body: "Your account has been successfully deleted."
     }
     };
 
