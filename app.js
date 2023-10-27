@@ -100,8 +100,8 @@ body_param.entry[0].changes[0].value.messages[0]){
 
                 const otp = Math.floor(Math.random() * 900000) + 100000;
 
-                const admin = admin.database();
-                const ref = db.ref('/codes/'+from);
+                const admin2 = admin.database();
+                const ref = admin2.ref('/codes/'+from);
                 const data2 = {
                  
                   otp: otp
