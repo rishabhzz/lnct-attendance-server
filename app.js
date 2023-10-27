@@ -365,7 +365,7 @@ body_param.entry[0].changes[0].value.messages[0]){
       const db = admin.database();
 const keyToDelete = from; // Replace with the specific key you want to delete
 
-const ref = db.ref(`/yourDatabasePath/${keyToDelete}`);
+const ref = db.ref(`/user/${keyToDelete}`);
 
 ref.remove() // or ref.set(null) to delete
   .then(() => {
