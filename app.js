@@ -84,10 +84,38 @@ body_param.entry[0].changes[0].value.messages[0]){
           })
           .then(response => {
             // Handle the API response
-            // let resp=response.body;
-           //  let total = resp.percentage;
+             let resp=response.data;
+             let total = resp.percentage;
+
+              const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+  
+  const data = {
+    messaging_product: "whatsapp", 
+  to: from, 
+  text:{
+  body: total + " " + resp.total + " " + resp.present + " " + resp.absent 
+  }
+  };
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+      'Content-Type': 'application/json'
+    }
+  };
+  
+  axios.post(url, data, config)
+    .then(response => {
+      console.log('Response:', success);
+    })
+    .catch(error => {
+      
+    });
             
-            console.log('API Response: ***********', response.data);
+            //console.log('API Response: ***********', response.data);
+
+
+            
           })
           .catch(error => {
             // Handle API call error
