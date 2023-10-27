@@ -85,7 +85,7 @@ body_param.entry[0].changes[0].value.messages[0]){
           .then(response => {
             // Handle the API response
              let resp=response.body;
-             let total=resp.percentage;
+             let total = resp.percentage;
             
             console.log('API Response:', total);
           })
