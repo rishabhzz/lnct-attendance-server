@@ -10,7 +10,94 @@ const { default: axios } = require('axios');
 const app = express().use(body_parser.json());
 require('dotenv').config();
 
+
+
+
 const port = process.env.PORT || 3000; // Set the port you want to use
+
+
+const rateLimitWindowMs = 60 * 1000; // 1 minute
+const maxRequestsPerWindow = 5;
+
+const requestCount = {}; // In-memory data store to track request counts
+
+
+
+// Rate limiting middleware
+app.use((req, res, next) => {
+ 
+   let body_param=req.body;
+  if (body_param.object){
+    if (body_param.entry &&
+    body_param.entry[0].changes &&
+    body_param.entry[0].changes[0].value.messages && 
+    body_param.entry[0].changes[0].value.messages[0]){
+
+      let phone = body_param.entry[0].changes[0].value.messages[0].from;
+      const now = Date.now();
+      if (!requestCount[phone]) {
+        requestCount[phone] = [];
+      }
+  
+      // Remove requests older than the rate limit window
+      requestCount[phone] = requestCount[phone].filter((timestamp) => timestamp > now - rateLimitWindowMs);
+  
+      if (requestCount[phone].length < maxRequestsPerWindow) {
+        // If the request count is within the limit, allow the request
+        requestCount[phone].push(now);
+        next();
+      } else {
+        // If the request count exceeds the limit, return an error response
+        res.status(429).json({ error: 'Rate limit exceeded' });
+        const data = {
+          messaging_product: "whatsapp", 
+        to: from, 
+        text:{
+        body: "Too many requests, Please try again after some time."
+        }
+        };
+        const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+        const config = {
+          headers: {
+            Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+            'Content-Type': 'application/json'
+          }
+        };
+        
+        axios.post(url, data, config)
+          .then(response => {
+            console.log('Response:', response);
+          })
+          .catch(error => {
+            console.log('error while calling wa api using login command having user');
+            
+          });
+
+      }
+     
+    
+    
+    }else{
+      requestCount[phone].push(now);
+        next();
+
+    }
+    }else{
+      requestCount[phone].push(now);
+        next();
+
+    }
+
+
+
+
+
+
+
+
+
+});
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://lnct-attendxnce-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -18,6 +105,10 @@ admin.initializeApp({
 
 
 const mytoken = 'rishabh';
+
+
+
+
 
 // Define a route to handle incoming webhook requests
 app.get('/webhook', (req, res) => {
