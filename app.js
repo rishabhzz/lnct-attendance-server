@@ -72,11 +72,15 @@ body_param.entry[0].changes[0].value.messages[0]){
         const pass = userData.pass;
 
         // Use the childId and childApiToken to make an API call
-        axios
-          .post('https://lnct-attendance-adtm.onrender.com/attendance', {
-            username: id,
+
+
+         axios
+          .get('https://lnct-attendance-adtm.onrender.com/attendance', {
+            params: {
+             username: id,
             password: pass,
-            // Other data for the API call
+              
+            }
           })
           .then(response => {
             // Handle the API response
