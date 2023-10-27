@@ -437,7 +437,7 @@ ref.remove() // or ref.set(null) to delete
       messaging_product: "whatsapp", 
     to: from, 
     text:{
-    body: "Use following commands and help yourself"
+    body: "Hola Users!👋🏻 \n Thank you for being a part! \n You can use following commands : \n 1. *Login* - To connect your WhatsApp number with your Accsoft Account. \n 2. *AT* - Use this command to get your current attendance. \n 3. *Update* - To update your ID or Pass. \n 4. *Delete* - To remove and unlink your account. \n Loving this? Do let me know your feedback: https://instagram.com/lifeofrishxbh/" 
     }
     };
 
