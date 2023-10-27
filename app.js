@@ -102,7 +102,7 @@ body_param.entry[0].changes[0].value.messages[0]){
        res.sendStatus(200); // Respond to the webhook request
     })
     .catch(error => {
-      console.error('Firebase database error');
+       console.error('Firebase database error:', error);
       res.sendStatus(500); // Respond with an error status
     });
 
