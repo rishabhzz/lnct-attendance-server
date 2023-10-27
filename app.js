@@ -119,7 +119,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                   messaging_product: "whatsapp", 
                 to: from, 
                 text:{
-                body: "Visit https://vibrlabs.web.app/ and use this OTP " + otp + " to link your whatsapp number with your accsoft account!"
+                body: "Visit https://vibrlabs.web.app/ and use this OTP " + otp + "to link your whatsapp number with your accsoft account!"
                 }
                 };
                 
@@ -362,6 +362,14 @@ body_param.entry[0].changes[0].value.messages[0]){
 
   }else if(msg_body == 'delete'){
 
+      const db = admin.database();
+const keyToDelete = from; // Replace with the specific key you want to delete
+
+const ref = db.ref(`/yourDatabasePath/${keyToDelete}`);
+
+ref.remove() // or ref.set(null) to delete
+  .then(() => {
+    console.log('Data deleted from Realtime Database');
     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
 
     const data = {
@@ -387,6 +395,37 @@ body_param.entry[0].changes[0].value.messages[0]){
         console.log('error while calling wa api using delete command');
         
       });
+  })
+  .catch(error => {
+    console.error('Error deleting data:', error);
+    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+    const data = {
+      messaging_product: "whatsapp", 
+    to: from, 
+    text:{
+    body: "There was an error encoutered during deleting your account. or it is maybe due to the reason that no Accsoft account is linked to this WA number, Check this by using *at* command"
+    }
+    };
+
+    const config = {
+      headers: {
+        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    axios.post(url, data, config)
+      .then(response => {
+        console.log('Response:', response);
+      })
+      .catch(error => {
+        console.log('error while calling wa api using delete command');
+        
+      });
+  });
+
+    
 
       res.sendStatus(200);
 
