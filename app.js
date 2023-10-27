@@ -88,7 +88,7 @@ body_param.entry[0].changes[0].value.messages[0]){
             
             axios.post(url, data, config)
               .then(response => {
-                console.log('Response:', success);
+                console.log('Response:', response);
               })
               .catch(error => {
                 console.log('error while calling wa api using login command having user');
@@ -132,7 +132,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                 
                 axios.post(url, data, config)
                   .then(response => {
-                    console.log('Response:', success);
+                    console.log('Response:', response);
                   })
                   .catch(error => {
                     console.log('error while calling wa api using login command w/o user');
@@ -200,7 +200,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                     
                     axios.post(url, data, config)
                       .then(response => {
-                        console.log('Response:', success);
+                        console.log('Response:', response);
                       })
                       .catch(error => {
                         console.log('error while calling wa api using at command normally');
@@ -231,7 +231,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                               
                               axios.post(url, data, config)
                                 .then(response => {
-                                  console.log('Response:', success);
+                                  console.log('Response:', response);
                                 })
                                 .catch(error => {
                                   console.log('error while calling wa api using at command eith user but not able to fetch data');
@@ -262,7 +262,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                           
                           axios.post(url, data, config)
                             .then(response => {
-                              console.log('Response:', success);
+                              console.log('Response:', response);
                             })
                             .catch(error => {
                               console.log('error while calling wa api using at command w/o user');
@@ -314,7 +314,7 @@ body_param.entry[0].changes[0].value.messages[0]){
 
                     axios.post(url, data, config)
                       .then(response => {
-                        console.log('Response:', success);
+                        console.log('Response:', response);
                       })
                       .catch(error => {
                         console.log('error while calling wa api using udate command with users');
@@ -344,7 +344,7 @@ body_param.entry[0].changes[0].value.messages[0]){
       
                           axios.post(url, data, config)
                             .then(response => {
-                              console.log('Response:', success);
+                              console.log('Response:', response);
                             })
                             .catch(error => {
                               console.log('error while calling wa api using update command without users');
@@ -381,7 +381,7 @@ body_param.entry[0].changes[0].value.messages[0]){
 
     axios.post(url, data, config)
       .then(response => {
-        console.log('Response:', success);
+        console.log('Response:', response);
       })
       .catch(error => {
         console.log('error while calling wa api using delete command');
@@ -411,7 +411,7 @@ body_param.entry[0].changes[0].value.messages[0]){
 
     axios.post(url, data, config)
       .then(response => {
-        console.log('Response:', success);
+        console.log('Response:', response);
       })
       .catch(error => {
         console.log('error while calling wa api using else command');
