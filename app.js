@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000; // Set the port you want to use
 
 
 const rateLimitWindowMs = 30 * 1000; // 1 minute
-const maxRequestsPerWindow = 2;
+const maxRequestsPerWindow = 1;
 
 const requestCount = {}; // In-memory data store to track request counts
 
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
   
       // Remove requests older than the rate limit window
       requestCount[phone] = requestCount[phone].filter((timestamp) => timestamp > now - rateLimitWindowMs);
-  if(msg_body == 'login'){
+  if(msg_body == 'at'){
 
        if (requestCount[phone].length < maxRequestsPerWindow) {
         // If the request count is within the limit, allow the request
