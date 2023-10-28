@@ -278,7 +278,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
-                    body: total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
+                    body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
                     
