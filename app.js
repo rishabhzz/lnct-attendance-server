@@ -211,7 +211,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                   messaging_product: "whatsapp", 
                 to: from, 
                 text:{
-                body: "Visit https://vibrlabs.web.app/ and use this OTP " + otp + "to link your whatsapp number with your accsoft account!"
+                body: "Visit https://lnct-attendxnce.web.app and use this OTP *" + otp + "* to link your whatsapp number with your accsoft account!"
                 }
                 };
                 
@@ -596,7 +596,7 @@ ref.remove() // or ref.set(null) to delete
           messaging_product: "whatsapp", 
         to: from, 
         text:{
-        body: "No account found." + "\n" + "Follow this url to link your whatsapp number with your Accsoft ID"
+        body: "No account found." + "\n" + "Reply to this message with *HELP* to get the list of all the commands."
         }
         };
 
