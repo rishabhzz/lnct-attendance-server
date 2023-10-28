@@ -272,22 +272,20 @@ body_param.entry[0].changes[0].value.messages[0]){
                               let resp=response.data;
                               let total = resp.percentage;
 
+                                 const data = {
+                      messaging_product: "whatsapp", 
+                    to: from, 
+                    text:{
+                    body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
+                    }
+                    };
+
                              if (total.length === 0){
                                      const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
                     body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
-                    }
-                    };
-                              
-                             }else{
-
-                              const data = {
-                      messaging_product: "whatsapp", 
-                    to: from, 
-                    text:{
-                    body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
                               
@@ -324,7 +322,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                 messaging_product: "whatsapp", 
                               to: from, 
                               text:{
-                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser. If you can then try again and if the same error occurs do check your ID : " + id + " & Pass : " + pass + "\n" + "👉🏻 Use *check* command to update your credentials" 
+                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser and then try again and if the same error occurs do check your ID : " + id + " & Pass : " + pass + "\n" + "👉🏻 Use *check* command to update your credentials" 
                               }
                               };
                               
