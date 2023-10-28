@@ -271,6 +271,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                               // Handle the API response
                               let resp=response.data;
                               let total = resp.percentage;
+                             console.log(total);
 
                                  const data = {
                       messaging_product: "whatsapp", 
@@ -280,7 +281,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                     }
                     };
 
-                             if (total.length === 0){
+                             if (resp.percentage.trim().length === 0){
                                      const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
