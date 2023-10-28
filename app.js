@@ -396,81 +396,123 @@ body_param.entry[0].changes[0].value.messages[0]){
 
 
 
-                      admin
-                      .database()
-                      .ref(`user/${from}`)
-                      .once('value')
-                      .then(snapshot => {
-                        const userData = snapshot.val();
 
-                        if (userData) {
-                          // User exists in the database
-                          const id = userData.id;
-                          const pass = userData.pass;
-                          
-                     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
 
-                    const data = {
-                      messaging_product: "whatsapp", 
-                    to: from, 
-                    text:{
-                    body: "Your old account is deleted. \n Reply with *LOGIN* command to link your number with updated ID and Password."
-                    }
-                    };
+    admin
+    .database()
+    .ref(`user/${from}`)
+    .once('value')
+    .then(snapshot => {
+      const userData = snapshot.val();
 
-                    const config = {
-                      headers: {
+      if (userData) {
+      const db = admin.database();
+const keyToDelete = from; // Replace with the specific key you want to delete
+
+const ref = db.ref(`/user/${keyToDelete}`);
+
+ref.remove() // or ref.set(null) to delete
+  .then(() => {
+    console.log('Data deleted from Realtime Database using update command');
+    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+    const data = {
+      messaging_product: "whatsapp", 
+    to: from, 
+    text:{
+    body: "Your old account is deleted. \n Reply with *LOGIN* command to link your number with updated ID and Password."
+    }
+    };
+
+    const config = {
+      headers: {
                 Authorization: process.env.TOKEN,
                 'Content-Type': 'application/json'
               }
-                    };
+    };
 
-                    axios.post(url, data, config)
-                      .then(response => {
-                        console.log('Response:', response);
-                      })
-                      .catch(error => {
-                        console.log('error while calling wa api using udate command with users');
-                        
-                      });
-                        
+    axios.post(url, data, config)
+      .then(response => {
+        console.log('Response:', response);
+      })
+      .catch(error => {
+        console.log('error while calling wa api using delete command');
+        
+      });
+  })
+  .catch(error => {
+    console.error('Error deleting data:', error);
+    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
 
-                        
-                        } else {
-                          console.log('User not found in the database.');
-                          const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+    const data = {
+      messaging_product: "whatsapp", 
+    to: from, 
+    text:{
+    body: "Please try again after some time. There was an error encoutered during updating your account. or it is maybe due to the reason that no Accsoft account is linked to this WA number, Check this by using *at* command"
+    }
+    };
 
-                          const data = {
-                            messaging_product: "whatsapp", 
-                          to: from, 
-                          text:{
-                          body: "No account found." + "\n" + "To create an account , reply with *LOGIN* to this message."
-                          }
-                          };
-      
-                          const config = {
-                            headers: {
+    const config = {
+      headers: {
                 Authorization: process.env.TOKEN,
                 'Content-Type': 'application/json'
               }
-                          };
-      
-                          axios.post(url, data, config)
-                            .then(response => {
-                              console.log('Response:', response);
-                            })
-                            .catch(error => {
-                              console.log('error while calling wa api using update command without users');
-                              
-                            });
+    };
 
-                        }
-                        res.sendStatus(200); // Respond to the webhook request
-                      })
-                      .catch(error => {
-                        console.error('Firebase database error:', error);
-                        res.sendStatus(500); // Respond with an error status
-                      });
+    axios.post(url, data, config)
+      .then(response => {
+        console.log('Response:', response);
+      })
+      .catch(error => {
+        console.log('error while calling wa api using delete command');
+        
+      });
+  });
+
+    
+
+
+}else{
+
+
+    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+    const data = {
+      messaging_product: "whatsapp", 
+    to: from, 
+    text:{
+    body: "No account found. \n Use *Login* command to link your Accsoft account."
+
+     
+    }
+    };
+
+    const config = {
+      headers: {
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
+    };
+
+    axios.post(url, data, config)
+      .then(response => {
+        console.log('Response:', response);
+      })
+      .catch(error => {
+        console.log('error while calling wa api using update command');
+        
+      });
+
+
+
+
+    }
+    res.sendStatus(200); 
+  })
+  .catch(error => {
+    console.error('Firebase database error:', error);
+    res.sendStatus(500); // Respond with an error status
+  });
 
 
   }else if(msg_body == 'delete'){
