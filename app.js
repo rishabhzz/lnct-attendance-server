@@ -289,6 +289,13 @@ body_param.entry[0].changes[0].value.messages[0]){
                               let resp=response.data;
                               let total = resp.percentage;
 
+                              
+                              
+
+
+                             if (total.includes("%")) {
+
+
                                  const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
@@ -296,25 +303,35 @@ body_param.entry[0].changes[0].value.messages[0]){
                     body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
-                              
-
-
-                             if (total.includes("%")) {
+                    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';                    
+                    const config = {
+                      headers: {
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
+                    };
+                    
+                    axios.post(url, data, config)
+                      .then(response => {
+                        console.log('Response:', response);
+                      })
+                      .catch(error => {
+                        console.log('error while calling wa api using at command normally',error);
+                        
+                      });
                               
                               
                               } else {
                                       console.log("No, 'total' does not contain a percentage sign.");
-                                                      data = {
-                                                          messaging_product: "whatsapp", 
+                                                  const data = {
+                                                        messaging_product: "whatsapp", 
                                                         to: from, 
                                                         text:{
                                                         body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
                                                         }
                                                         };
-                                                                  
-                                    }
-                          
 
+                              
                     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
                     
                     
@@ -334,6 +351,10 @@ body_param.entry[0].changes[0].value.messages[0]){
                         console.log('error while calling wa api using at command normally',error);
                         
                       });
+                                                                  
+                                    }
+                          
+
                               
                             
 
