@@ -279,9 +279,9 @@ body_param.entry[0].changes[0].value.messages[0]){
                     body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
-                               console.log("Lenght of resp.percentage: -->" + resp.percentage.trim().length);
+                               //console.log("Lenght of resp.percentage: -->" + resp.percentage.trim().length);
 
-                             if (resp.percentage.trim() === ""){
+                             if (resp.percentage.trim().length == 0){
                                      const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
