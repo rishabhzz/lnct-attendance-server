@@ -309,7 +309,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                 messaging_product: "whatsapp", 
                               to: from, 
                               text:{
-                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser. If you can then check your ID" + id + " & Pass" + pass + "\n" + "Please use *update command to update your credentials*" 
+                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser. If you can then try again and if the same error occurs do check your ID" + id + " & Pass" + pass + "\n" + "👉🏻 Use *update* command to update your credentials" 
                               }
                               };
                               
@@ -319,6 +319,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                   'Content-Type': 'application/json'
                                 }
                               };
+                              const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
                               
                               axios.post(url, data, config)
                                 .then(response => {
