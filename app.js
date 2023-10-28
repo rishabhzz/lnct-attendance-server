@@ -283,11 +283,11 @@ body_param.entry[0].changes[0].value.messages[0]){
 
 
                              if (total.includes("%")) {
-                               console.log("No, 'total' does contain a percentage sign.");
+                              
                               
 } else {
   console.log("No, 'total' does not contain a percentage sign.");
-                               const data = {
+                   data = {
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
