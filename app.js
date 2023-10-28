@@ -414,7 +414,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
-                    body: "Use this url https://vibrlabs.webapp to update your Accsoft ID and Password"
+                    body: "Your old account is deleted. \n Reply with *LOGIN* command to link your number with updated ID and Password."
                     }
                     };
 
@@ -444,7 +444,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                             messaging_product: "whatsapp", 
                           to: from, 
                           text:{
-                          body: "No account found." + "\n" + "Follow this url to link your whatsapp number with your Accsoft ID"
+                          body: "No account found." + "\n" + "To create an account , reply with *LOGIN* to this message."
                           }
                           };
       
