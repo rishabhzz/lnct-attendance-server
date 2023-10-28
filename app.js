@@ -16,7 +16,7 @@ require('dotenv').config();
 const port = process.env.PORT || 3000; // Set the port you want to use
 
 
-const rateLimitWindowMs = 15 * 1000; // 1 minute
+const rateLimitWindowMs = 30 * 1000; // 1 minute
 const maxRequestsPerWindow = 2;
 
 const requestCount = {}; // In-memory data store to track request counts
@@ -34,6 +34,11 @@ app.use((req, res, next) => {
     body_param.entry[0].changes[0].value.messages[0]){
 
       let phone = body_param.entry[0].changes[0].value.messages[0].from;
+      let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+      msg_body = msg_body.toLowerCase();
+
+
+     
       const now = Date.now();
       if (!requestCount[phone]) {
         requestCount[phone] = [];
@@ -41,8 +46,9 @@ app.use((req, res, next) => {
   
       // Remove requests older than the rate limit window
       requestCount[phone] = requestCount[phone].filter((timestamp) => timestamp > now - rateLimitWindowMs);
-  
-      if (requestCount[phone].length < maxRequestsPerWindow) {
+  if(msg_body == 'login'){
+
+       if (requestCount[phone].length < maxRequestsPerWindow) {
         // If the request count is within the limit, allow the request
         requestCount[phone].push(now);
         next();
@@ -74,6 +80,13 @@ app.use((req, res, next) => {
           });
 
       }
+      
+     }else{
+
+   next();
+   
+     }
+     
      
     
     
