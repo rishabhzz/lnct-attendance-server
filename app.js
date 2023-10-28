@@ -327,7 +327,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                                         messaging_product: "whatsapp", 
                                                         to: from, 
                                                         text:{
-                                                        body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
+                                                        body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or you're in *final year* ( there's no attendance data for final year students)."
                                                         }
                                                         };
 
