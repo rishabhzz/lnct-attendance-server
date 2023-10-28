@@ -281,7 +281,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                     }
                     };
 
-                             if (resp.percentage.trim().length === 0){
+                             if (resp.percentage === ""){
                                      const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
