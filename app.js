@@ -308,7 +308,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                         console.log('Response:', response);
                       })
                       .catch(error => {
-                        console.log('error while calling wa api using at command normally');
+                        console.log('error while calling wa api using at command normally',error);
                         
                       });
                               
