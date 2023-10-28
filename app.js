@@ -57,11 +57,10 @@ app.use((req, res, next) => {
         }
         };
         const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
-        const config = {
-          headers: {
-            Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-            'Content-Type': 'application/json'
-          }
+        headers: {
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
         };
         
         axios.post(url, data, config)
@@ -104,7 +103,7 @@ admin.initializeApp({
 });
 
 
-const mytoken = 'rishabh';
+const mytoken = process.env.MYTOKEN;
 
 
 
@@ -172,7 +171,7 @@ body_param.entry[0].changes[0].value.messages[0]){
             const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
             const config = {
               headers: {
-                Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
+                Authorization: process.env.TOKEN,
                 'Content-Type': 'application/json'
               }
             };
@@ -216,9 +215,9 @@ body_param.entry[0].changes[0].value.messages[0]){
                 
                 const config = {
                   headers: {
-                    Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                    'Content-Type': 'application/json'
-                  }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                 };
                 
                 axios.post(url, data, config)
@@ -298,9 +297,9 @@ body_param.entry[0].changes[0].value.messages[0]){
                     
                     const config = {
                       headers: {
-                        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                        'Content-Type': 'application/json'
-                      }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                     };
                     
                     axios.post(url, data, config)
@@ -329,9 +328,9 @@ body_param.entry[0].changes[0].value.messages[0]){
                               
                               const config = {
                                 headers: {
-                                  Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                                  'Content-Type': 'application/json'
-                                }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                               };
                               const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
                               
@@ -360,10 +359,10 @@ body_param.entry[0].changes[0].value.messages[0]){
                           };
                           
                           const config = {
-                            headers: {
-                              Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                              'Content-Type': 'application/json'
-                            }
+                           headers: {
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                           };
                           
                           axios.post(url, data, config)
@@ -413,9 +412,9 @@ body_param.entry[0].changes[0].value.messages[0]){
 
                     const config = {
                       headers: {
-                        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                        'Content-Type': 'application/json'
-                      }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                     };
 
                     axios.post(url, data, config)
@@ -443,9 +442,9 @@ body_param.entry[0].changes[0].value.messages[0]){
       
                           const config = {
                             headers: {
-                              Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-                              'Content-Type': 'application/json'
-                            }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
                           };
       
                           axios.post(url, data, config)
@@ -488,9 +487,9 @@ ref.remove() // or ref.set(null) to delete
 
     const config = {
       headers: {
-        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-        'Content-Type': 'application/json'
-      }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
     };
 
     axios.post(url, data, config)
@@ -516,9 +515,9 @@ ref.remove() // or ref.set(null) to delete
 
     const config = {
       headers: {
-        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-        'Content-Type': 'application/json'
-      }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
     };
 
     axios.post(url, data, config)
@@ -565,9 +564,9 @@ ref.remove() // or ref.set(null) to delete
 
   const config = {
     headers: {
-      Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-      'Content-Type': 'application/json'
-    }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
   };
 
   axios.post(url, data, config)
@@ -595,9 +594,9 @@ ref.remove() // or ref.set(null) to delete
 
         const config = {
           headers: {
-            Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-            'Content-Type': 'application/json'
-          }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
         };
 
         axios.post(url, data, config)
@@ -636,9 +635,9 @@ ref.remove() // or ref.set(null) to delete
 
     const config = {
       headers: {
-        Authorization: `Bearer EAASs6XgWjPMBO7tbfcpr9VmL3CL4wCU6bZBltw6prO7TN6BmoEJn906tuL1AOEPtnWlBhkyabNj6oz2hBSlK53pzqwN8eBhdsZB77KU6otGa1FBC98FyvcbPBBqyHrbH7sIzfbc7ctETia0cplaPIdLgExpjJmL51paLFQpHBIVCmgBuPZBPyoZBWQxyI1l5xlnM53I0zDD0nng35bSsisj0SmKZCw2AQYa8ZD`,
-        'Content-Type': 'application/json'
-      }
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
     };
 
     axios.post(url, data, config)
