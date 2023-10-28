@@ -16,8 +16,8 @@ require('dotenv').config();
 const port = process.env.PORT || 3000; // Set the port you want to use
 
 
-const rateLimitWindowMs = 60 * 1000; // 1 minute
-const maxRequestsPerWindow = 5;
+const rateLimitWindowMs = 15 * 1000; // 1 minute
+const maxRequestsPerWindow = 2;
 
 const requestCount = {}; // In-memory data store to track request counts
 
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
           messaging_product: "whatsapp", 
         to: phone, 
         text:{
-        body: "Too many requests, Please try again after some time."
+        body: "Too many requests, Please wait for a request to complete then send another message."
         }
         };
         const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
