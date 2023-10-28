@@ -272,15 +272,30 @@ body_param.entry[0].changes[0].value.messages[0]){
                               let resp=response.data;
                               let total = resp.percentage;
 
-                    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
-                    
-                    const data = {
+                             if (total.length === 0){
+                                     const data = {
+                      messaging_product: "whatsapp", 
+                    to: from, 
+                    text:{
+                    body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
+                    }
+                    };
+                              
+                             }else{
+
+                              const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
                     body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
+                              
+                             }
+
+                    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+                    
+                    
                     
                     const config = {
                       headers: {
