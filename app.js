@@ -57,11 +57,12 @@ app.use((req, res, next) => {
         }
         };
         const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
-        headers: {
+        const config = {
+              headers: {
                 Authorization: process.env.TOKEN,
                 'Content-Type': 'application/json'
               }
-        };
+            };
         
         axios.post(url, data, config)
           .then(response => {
