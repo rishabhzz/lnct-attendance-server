@@ -279,10 +279,14 @@ body_param.entry[0].changes[0].value.messages[0]){
                     body: "📝 \n" + total + "\n" + resp.total + "\n" + resp.present + "\n" + resp.absent 
                     }
                     };
-                               //console.log("Lenght of resp.percentage: -->" + resp.percentage.trim().length);
+                              
 
-                             if (resp.percentage.trim().length == 0){
-                                     const data = {
+
+                             if (total.includes("%")) {
+                              
+} else {
+  console.log("No, 'total' does not contain a percentage sign.");
+                               const data = {
                       messaging_product: "whatsapp", 
                     to: from, 
                     text:{
@@ -290,7 +294,8 @@ body_param.entry[0].changes[0].value.messages[0]){
                     }
                     };
                               
-                             }
+}
+                          
 
                     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
                     
