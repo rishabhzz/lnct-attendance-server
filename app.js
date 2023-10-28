@@ -309,7 +309,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                 messaging_product: "whatsapp", 
                               to: from, 
                               text:{
-                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser. If you can then try again and if the same error occurs do check your ID" + id + " & Pass" + pass + "\n" + "👉🏻 Use *update* command to update your credentials" 
+                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser. If you can then try again and if the same error occurs do check your ID : " + id + " & Pass : " + pass + "\n" + "👉🏻 Use *check* command to update your credentials" 
                               }
                               };
                               
