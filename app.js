@@ -53,8 +53,9 @@ app.use((req, res, next) => {
         requestCount[phone].push(now);
         next();
       } else {
-        // If the request count exceeds the limit, return an error response
-        res.status(429).json({ error: 'Rate limit exceeded' });
+        console.log("multiple requess stopped");
+      //  If the request count exceeds the limit, return an error response
+       
         const data = {
           messaging_product: "whatsapp", 
         to: phone, 
@@ -78,6 +79,8 @@ app.use((req, res, next) => {
             console.log('error while calling wa api using login command having user');
             
           });
+
+         res.status(200).json({ error: 'Rate limit exceeded' });
 
       }
       
