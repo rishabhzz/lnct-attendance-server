@@ -559,7 +559,9 @@ ref.remove() // or ref.set(null) to delete
       messaging_product: "whatsapp", 
     to: from, 
     text:{
-    body: "There was an error encoutered during deleting your account. or it is maybe due to the reason that no Accsoft account is linked to this WA number, Check this by using *at* command"
+    body: "No account found. \n Use *Login* command to link your Accsoft account."
+
+     
     }
     };
 
