@@ -252,7 +252,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                       .then(snapshot => {
                         const userData = snapshot.val();
 
-                        if (userData) {
+                        if (userData) {       
                           // User exists in the database
                           const id = userData.id;
                           const pass = userData.pass;
@@ -286,17 +286,17 @@ body_param.entry[0].changes[0].value.messages[0]){
                              if (total.includes("%")) {
                               
                               
-} else {
-  console.log("No, 'total' does not contain a percentage sign.");
-                   data = {
-                      messaging_product: "whatsapp", 
-                    to: from, 
-                    text:{
-                    body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
-                    }
-                    };
-                              
-}
+                              } else {
+                                      console.log("No, 'total' does not contain a percentage sign.");
+                                                      data = {
+                                                          messaging_product: "whatsapp", 
+                                                        to: from, 
+                                                        text:{
+                                                        body: "📝 \n No attendance data found. \n It is maybe due to there is no attendance data present in your Accsoft Account. \n or If you're in *final year* ( there's no attendance data for final year students)."
+                                                        }
+                                                        };
+                                                                  
+                                    }
                           
 
                     const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
@@ -330,7 +330,7 @@ body_param.entry[0].changes[0].value.messages[0]){
                                 messaging_product: "whatsapp", 
                               to: from, 
                               text:{
-                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser and then try again and if the same error occurs do check your ID : " + id + " & Pass : " + pass + "\n" + "👉🏻 Use *check* command to update your credentials" 
+                              body: "There was an error fetching your attendance." + "\n" + "Please verify if you're able to check your attendance through your browser and then try again and if the same error occurs do check your ID : " + id + " & Pass : " + pass + "\n" + "👉🏻 Use *check*  or *update* command to check or update your credentials" 
                               }
                               };
                               
@@ -475,6 +475,15 @@ body_param.entry[0].changes[0].value.messages[0]){
 
   }else if(msg_body == 'delete'){
 
+
+    admin
+    .database()
+    .ref(`user/${from}`)
+    .once('value')
+    .then(snapshot => {
+      const userData = snapshot.val();
+
+      if (userData) {
       const db = admin.database();
 const keyToDelete = from; // Replace with the specific key you want to delete
 
@@ -540,7 +549,46 @@ ref.remove() // or ref.set(null) to delete
 
     
 
-      res.sendStatus(200);
+
+}else{
+
+
+    const url = 'https://graph.facebook.com/v17.0/167707166417060/messages';
+
+    const data = {
+      messaging_product: "whatsapp", 
+    to: from, 
+    text:{
+    body: "There was an error encoutered during deleting your account. or it is maybe due to the reason that no Accsoft account is linked to this WA number, Check this by using *at* command"
+    }
+    };
+
+    const config = {
+      headers: {
+                Authorization: process.env.TOKEN,
+                'Content-Type': 'application/json'
+              }
+    };
+
+    axios.post(url, data, config)
+      .then(response => {
+        console.log('Response:', response);
+      })
+      .catch(error => {
+        console.log('error while calling wa api using delete command');
+        
+      });
+
+
+
+
+    }
+    res.sendStatus(200); 
+  })
+  .catch(error => {
+    console.error('Firebase database error:', error);
+    res.sendStatus(500); // Respond with an error status
+  });
 
   }else if(msg_body == 'check'){
 
